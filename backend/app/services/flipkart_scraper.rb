@@ -68,7 +68,7 @@ class FlipkartScraper
     # 3. If still empty → get from h1 span
     if desc.blank?
       desc = doc.at("h1 span")&.text&.strip
-      desc = nil if desc.empty?
+      desc = nil if desc.blank?
     end
 
     # if still not description create fallback for No description
