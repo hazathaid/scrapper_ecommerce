@@ -9,7 +9,10 @@ export default function Home() {
   const scrapeProduct = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/scrape", { url });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/scrape`,
+        { url }
+      );
       setProduct(res.data);
     } catch (err) {
       console.error(err);
