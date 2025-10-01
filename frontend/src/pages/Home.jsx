@@ -10,7 +10,7 @@ export default function Home() {
     try {
       setLoading(true);
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/scrape`,
+        `${import.meta.env.VITE_API_URL}/products/scrape`,
         { url }
       );
       setProduct(res.data);
