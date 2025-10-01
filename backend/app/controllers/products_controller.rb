@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
     products = Product.all.order(created_at: :desc)
 
     render json: {
-      products: products.as_json(only: [:id, :name, :price, :description])
+      products: products.map do |p|
+        {
+          id: p.id,
+          name: p.name,
+          price: p.price,
+          description: p.description,
+          image_url: p.image.attached? ? url_for(p.image) : nil
+        }
+      end
     }
   end
 
